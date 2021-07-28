@@ -43,5 +43,32 @@
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3",
     "wait-on": "^6.0.0"
+  },
+  "build": {
+    "appId": "com.RequestsInterceptor",
+    "files": [
+      "**/*",
+      "dist/**/*"
+    ],
+    "directories": {
+      "output": "release",
+      "buildResources": "dist"
+    },
+    "extraResources": [
+      "dist/assets/icons/favicon.png"
+    ],
+    "win": {
+      "icon": "dist/assets/icons/favicon.png",
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "runAfterFinish": true,
+      "createDesktopShortcut": true,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true
+    }
   }
 }
