@@ -23,7 +23,7 @@
     ]
   },
   "include": [
-    "src/**/*.d.ts"
+    "renderer/src/**/*.d.ts"
   ],
   "exclude": [
     "node_modules"

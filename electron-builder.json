@@ -13,7 +13,7 @@
     "!*.md",
     "!package.json",
     "!package-lock.json",
-    "!src/",
+    "!renderer/",
     "!e2e/",
     "!hooks/",
     "!_config.yml",

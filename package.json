@@ -17,7 +17,14 @@
     "electron:build": "npm run build:prod && electron-builder"
   },
   "dependencies": {
-    "@electron/remote": "^1.2.0"
+    "@angular/animations": "^11.0.0 || ^12.0.0-0",
+    "@angular/cdk": "^11.2.13",
+    "@angular/forms": "^11.0.0 || ^12.0.0-0",
+    "@angular/material": "^11.2.13",
+    "@electron/remote": "^1.2.0",
+    "sqlite": "^4.0.23",
+    "sqlite3": "^5.0.2",
+    "sqlstring": "^2.3.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1102.6",

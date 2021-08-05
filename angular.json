@@ -12,15 +12,15 @@
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
             "outputPath": "dist",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "tsConfig": "src/tsconfig.app.json",
-            "polyfills": "src/polyfills.ts",
+            "index": "renderer/src/index.html",
+            "main": "renderer/src/main.ts",
+            "tsConfig": "renderer/src/tsconfig.app.json",
+            "polyfills": "renderer/src/polyfills.ts",
             "assets": [
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "renderer/src/styles.scss"
             ],
             "scripts": [],
             "customWebpackConfig": {
@@ -39,8 +39,8 @@
               "buildOptimizer": false,
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.dev.ts"
+                  "replace": "renderer/src/environments/environment.ts",
+                  "with": "renderer/src/environments/environment.dev.ts"
                 }
               ]
             },
@@ -55,8 +55,8 @@
               "buildOptimizer": false,
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.web.ts"
+                  "replace": "renderer/src/environments/environment.ts",
+                  "with": "renderer/src/environments/environment.web.ts"
                 }
               ]
             },
@@ -71,8 +71,8 @@
               "buildOptimizer": true,
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "renderer/src/environments/environment.ts",
+                  "with": "renderer/src/environments/environment.prod.ts"
                 }
               ]
             }
@@ -99,35 +99,6 @@
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "angular-electron:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-builders/custom-webpack:karma",
-          "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills-test.ts",
-            "tsConfig": "src/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
-            "scripts": [],
-            "styles": [
-              "src/styles.scss"
-            ],
-            "assets": [
-              "src/assets"
-            ],
-            "customWebpackConfig": {
-              "path": "./angular.webpack.js"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-eslint/builder:lint",
-          "options": {
-            "eslintConfig": ".eslintrc.json",
-            "lintFilePatterns": [
-              "src/**.ts",
-              "main.ts"
-            ]
           }
         }
       }
