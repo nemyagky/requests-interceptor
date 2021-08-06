@@ -44,10 +44,6 @@ export const InitService = new class InitServiceSingleton {
         const linksWindow = LinksWindowService.getBrowserWindow();
 
         await LinksWindowUpdateService.startUpdatingLinks(mainWindow, linksWindow);
-
-        mainWindow.webContents.on('did-navigate-in-page', () => {
-            LinksWindowUpdateService.updateLinks();
-        })
     }
 
 }

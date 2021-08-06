@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import {ipcRenderer} from 'electron';
+import {AppModule} from "../../app.module";
 
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: AppModule
 })
 
 export class ElectronService {

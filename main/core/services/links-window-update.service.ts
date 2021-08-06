@@ -10,14 +10,21 @@ export const LinksWindowUpdateService = new class LinksWindowUpdateServiceSingle
         this.linksWindow = linksWindow;
 
         await this.updateLinks();
+        this.startUpdatingOnRedirects();
     }
 
-    public async updateLinks(): Promise<void> {
+    private async updateLinks(): Promise<void> {
         const links = await this.mainWindow.webContents.executeJavaScript(`
             [...document.body.getElementsByTagName("a")].map(el => el.outerHTML)
         `);
 
         this.linksWindow.webContents.send('links-update', links);
+    }
+
+    private startUpdatingOnRedirects(): void {
+        this.mainWindow.webContents.on('did-navigate-in-page', () => {
+            this.updateLinks();
+        })
     }
 
 }

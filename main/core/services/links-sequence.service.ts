@@ -63,7 +63,6 @@ export const LinksSequenceService = new class LinksSequenceServiceSingleton {
         }
     }
 
-
     private getLogPath(): string {
         return path.join(app.getAppPath(), 'links-sequence.json')
     }

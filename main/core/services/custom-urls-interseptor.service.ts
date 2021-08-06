@@ -5,7 +5,6 @@ import {RequestsLoggerService} from "./requests-logger.service";
 
 export const CustomUrlsInterceptorService = new class CustomUrlsInterceptorServiceSingleton {
 
-
     public interceptOzonUrl(req: ProtocolRequest, response): boolean {
         if (req.url === 'https://ozon.ru/api/composer-api.bx/_action/summary' ||
             req.url === 'https://www.ozon.ru/api/composer-api.bx/_action/summary') {
