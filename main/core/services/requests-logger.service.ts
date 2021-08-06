@@ -26,7 +26,7 @@ export const RequestsLoggerService = new class RequestsLoggerServiceSingleton {
 
     private async openDBConnection(): Promise<void> {
         this.db = await open({
-            filename: app.getAppPath(),
+            filename: this.getDBPath(),
             driver: sqlite3.Database
         });
     }
@@ -42,6 +42,10 @@ export const RequestsLoggerService = new class RequestsLoggerServiceSingleton {
     }
 
     private getDBPath(): string {
-        return path.join(app.getAppPath(), 'requests.db')
+        const serve = process.argv.slice(1).some(val => val === '--serve');
+
+        return serve
+            ? path.join(__dirname, '../../../requests.db')
+            : path.join(app.getAppPath(), 'requests.db');
     }
 }

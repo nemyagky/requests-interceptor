@@ -28,8 +28,7 @@ export const MainWindowService = new class MainWindowServiceSingleton {
 
         this.browserWindow.removeMenu();
         this.browserWindow.maximize();
-        this.browserWindow.webContents.openDevTools();
-
+        // this.browserWindow.webContents.openDevTools();
     }
 
     private browserWindowConstructor(): BrowserWindow {

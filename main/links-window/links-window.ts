@@ -12,7 +12,7 @@ export const LinksWindowService = new class LinksWindowServiceSingleton {
 
         this.browserWindow.removeMenu();
         this.browserWindow.maximize();
-        this.browserWindow.webContents.openDevTools();
+        // this.browserWindow.webContents.openDevTools();
     }
 
     public async loadWebSite(): Promise<void> {
