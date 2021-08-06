@@ -19,7 +19,7 @@ export const LinksWindowService = new class LinksWindowServiceSingleton {
         const serve = process.argv.slice(1).some(val => val === '--serve');
 
         if (serve) {
-            await this.browserWindow.loadURL('http://localhost:4203/');
+            await this.browserWindow.loadURL('http://localhost:4288/');
         } else {
             await this.browserWindow.loadURL(url.format({
                 pathname: path.join(app.getAppPath(), 'dist/index.html'),

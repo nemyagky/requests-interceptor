@@ -10,9 +10,9 @@
     "build": "npm run electron:serve-tsc && ng build --base-href ./",
     "build:dev": "npm run build -- -c dev",
     "build:prod": "npm run build -- -c production",
-    "ng:serve": "ng serve --port 4203 -c web -o",
+    "ng:serve": "ng serve --port 4288 -c web -o",
     "electron:serve-tsc": "tsc -p tsconfig.serve.json",
-    "electron:serve": "wait-on tcp:4203 && npm run electron:serve-tsc && npx electron . --serve",
+    "electron:serve": "wait-on tcp:4288 && npm run electron:serve-tsc && npx electron . --serve",
     "electron:local": "npm run build:prod && npx electron .",
     "electron:build": "npm run build:prod && electron-builder"
   },
