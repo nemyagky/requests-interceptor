@@ -1,15 +1,13 @@
-import {BrowserWindow} from 'electron';
+import {app, BrowserWindow} from 'electron';
+import * as url from 'url';
+import * as path from 'path';
 
 
 export const LinksWindowService = new class LinksWindowServiceSingleton {
 
     private browserWindow: BrowserWindow;
 
-    public init(): void {
-        this.initBrowserWindow();
-    }
-
-    private initBrowserWindow(): void {
+    public createBrowserWindow(): void {
         this.browserWindow = this.browserWindowConstructor();
 
         this.browserWindow.removeMenu();
@@ -18,7 +16,17 @@ export const LinksWindowService = new class LinksWindowServiceSingleton {
     }
 
     public async loadWebSite(): Promise<void> {
-        await this.browserWindow.loadURL('http://localhost:4203/');
+        const serve = process.argv.slice(1).some(val => val === '--serve');
+
+        if (serve) {
+            await this.browserWindow.loadURL('http://localhost:4203/');
+        } else {
+            await this.browserWindow.loadURL(url.format({
+                pathname: path.join(app.getAppPath(), 'dist/index.html'),
+                protocol: 'file:',
+                slashes: true
+            }))
+        }
     }
 
     public getBrowserWindow(): BrowserWindow {

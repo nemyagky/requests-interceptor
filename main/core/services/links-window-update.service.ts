@@ -1,26 +1,22 @@
 import {BrowserWindow} from 'electron';
 
-export const LinksParserService = new class LinksParserServiceSingleton {
+export const LinksWindowUpdateService = new class LinksWindowUpdateServiceSingleton {
 
     private mainWindow: BrowserWindow;
     private linksWindow: BrowserWindow;
 
-    public async init(mainWindow: BrowserWindow, linksWindow: BrowserWindow) {
+    public async startUpdatingLinks(mainWindow: BrowserWindow, linksWindow: BrowserWindow) {
         this.mainWindow = mainWindow;
         this.linksWindow = linksWindow;
 
-        await this.insertJSIntoBrowserWindow();
+        await this.updateLinks();
     }
 
-    private async insertJSIntoBrowserWindow(): Promise<void> {
+    public async updateLinks(): Promise<void> {
         const links = await this.mainWindow.webContents.executeJavaScript(`
             [...document.body.getElementsByTagName("a")].map(el => el.outerHTML)
         `);
 
-        this.updateLinksView(links);
-    }
-
-    private updateLinksView(links: []) {
         this.linksWindow.webContents.send('links-update', links);
     }
 

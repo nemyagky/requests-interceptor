@@ -1,4 +1,4 @@
-export interface BDRequest {
+export interface DBRequest {
     pageUrl: string;
     method: string;
     requestUrl: string;

@@ -4,17 +4,18 @@ import {BrowserWindow, session} from 'electron';
 export const MainWindowService = new class MainWindowServiceSingleton {
 
     private browserWindow: BrowserWindow;
+    private defaultUrl: string = 'https://ozon.ru/';
     private sessionPartition: string;
     private session: session;
 
 
-    public init(): void {
+    public createBrowserWindow(): void {
         this.initSession();
         this.initMainWindow();
     }
 
     public async loadWebSite(): Promise<void> {
-        await this.browserWindow.loadURL('https://ozon.ru/');
+        await this.browserWindow.loadURL(this.defaultUrl);
     }
 
     private initSession(): void {
@@ -28,6 +29,7 @@ export const MainWindowService = new class MainWindowServiceSingleton {
         this.browserWindow.removeMenu();
         this.browserWindow.maximize();
         this.browserWindow.webContents.openDevTools();
+
     }
 
     private browserWindowConstructor(): BrowserWindow {
