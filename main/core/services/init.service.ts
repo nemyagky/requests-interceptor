@@ -5,7 +5,8 @@ import {RequestsLoggerService} from "./requests-logger.service";
 import {LinksSequenceService} from "./links-sequence.service";
 import {LinksWindowUpdateService} from "./links-window-update.service";
 
-
+// The most massive application file, responsible for initializing the entire application. 
+// We should refactor it in future
 export const InitService = new class InitServiceSingleton {
 
     public async init(): Promise<void> {
